@@ -136,3 +136,4 @@ C:\Users\Пользователь\TaskMarketplace.API\obj\Debug\net9.0\refint\Ta
 C:\Users\Пользователь\TaskMarketplace.API\obj\Debug\net9.0\TaskMarketplace.API.pdb
 C:\Users\Пользователь\TaskMarketplace.API\obj\Debug\net9.0\TaskMarketplace.API.genruntimeconfig.cache
 C:\Users\Пользователь\TaskMarketplace.API\obj\Debug\net9.0\ref\TaskMarketplace.API.dll
+c:\Users\Пользователь\TaskMarketplace.API\obj\Debug\net9.0\TaskMarketplace.API.sourcelink.json

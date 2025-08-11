@@ -5,7 +5,7 @@ public enum TaskStatus
     New,
     Taken,
     Submitted,
-    Approved,
+    Approved,   
     Rejected
 }
 

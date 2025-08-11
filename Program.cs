@@ -7,12 +7,18 @@ using TaskMarketplace.API.Data;
 using TaskMarketplace.API.Services;
 using TaskMarketplace.API.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http.Json;
+using System.Text.Json.Serialization;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.Configure<JsonOptions>(options =>
+{
+    options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;//зацикливание ссылки при возврате
+});
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<ITaskService, TaskService>();
@@ -88,11 +94,12 @@ auth.MapPost("/login", async (
 
 var me = app.MapGroup("/me").RequireAuthorization();
 
+//получаем поинты
 me.MapGet("/points", async (
     ClaimsPrincipal userClaims,
     ApplicationDbContext db) =>
 {
-    var userId = int.Parse(userClaims.FindFirst("id")!.Value);
+    var userId = int.Parse(userClaims.FindFirst(ClaimTypes.NameIdentifier)!.Value);
     var user = await db.Users.FindAsync(userId);
     return user is null
         ? Results.NotFound("User not found")
@@ -103,11 +110,24 @@ me.MapGet("/points", async (
 var tasks = app.MapGroup("/tasks")
     .RequireAuthorization();
 
-tasks.MapGet("/", async (ApplicationDbContext db
-    ,ClaimsPrincipal userClaims) =>
-    await db.Tasks.Include(t => t.TakenByUser).ToListAsync()
-);
+tasks.MapGet("/", async (
+    ApplicationDbContext db,
+    ClaimsPrincipal userClaims) =>
+{
+    var userId = int.Parse(userClaims.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+    var role = userClaims.FindFirst(ClaimTypes.Role)?.Value;
 
+    IQueryable<TaskItem> query = db.Tasks.Include(t => t.TakenByUser);
+
+    if (role != "Admin")
+    {
+        query = query.Where(t => t.TakenByUserId == null || t.TakenByUserId == userId);
+    }
+
+    return await query.ToListAsync();
+}).RequireAuthorization();
+
+//информация о таске 
 tasks.MapGet("/{id}", async (int id,
     ClaimsPrincipal userClaims,
     ApplicationDbContext db) =>
@@ -117,47 +137,7 @@ tasks.MapGet("/{id}", async (int id,
             : Results.NotFound()
 );
 
-tasks.MapGet("/by-status", async (
-    string status,
-    ApplicationDbContext db) =>
-{
-    // Проверка, что переданный статус — корректный элемент enum-а
-    if (!Enum.TryParse<TaskMarketplace.API.Models.TaskStatus>(status, ignoreCase: true, out var parsedStatus))
-    {
-        return Results.BadRequest($"Invalid status. Allowed values: {string.Join(", ", Enum.GetNames(typeof(TaskMarketplace.API.Models.TaskStatus)))}");
-    }
-
-    var tasksList = await db.Tasks
-        .Include(t => t.TakenByUser)
-        .Where(t => t.Status == parsedStatus)
-        .ToListAsync();
-
-    return Results.Ok(tasksList);
-});
-
-tasks.MapGet("/sorted", async (
-    string? sortBy,
-    string? order,
-    ApplicationDbContext db) =>
-{
-    var query = db.Tasks.Include(t => t.TakenByUser).AsQueryable();
-
-    bool desc = string.Equals(order, "desc", StringComparison.OrdinalIgnoreCase);
-
-    query = sortBy?.ToLower() switch
-    {
-        "created"   => desc ? query.OrderByDescending(t => t.CreatedAt) : query.OrderBy(t => t.CreatedAt),
-        "updated"   => desc ? query.OrderByDescending(t => t.UpdatedAt) : query.OrderBy(t => t.UpdatedAt),
-        _           => query.OrderBy(t => t.Id)
-    };
-
-    var tasksList = await query.ToListAsync();
-    return Results.Ok(tasksList);
-});
-
-
-
-
+//даём новую таску
 tasks.MapPost("/", async (TaskItem task, ApplicationDbContext db) =>
 {
     task.CreatedAt = DateTime.UtcNow;
@@ -167,13 +147,13 @@ tasks.MapPost("/", async (TaskItem task, ApplicationDbContext db) =>
     return Results.Created($"/tasks/{task.Id}", task);
 }).RequireAuthorization("AdminOnly");
 
-
+//берём таску
 tasks.MapPost("/{id}/take", async (
     int id,
     ClaimsPrincipal userClaims,
     ApplicationDbContext db) =>
 {
-    var userId = int.Parse(userClaims.FindFirst("id")!.Value);
+    var userId = int.Parse(userClaims.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
     var task = await db.Tasks.FindAsync(id);
     if (task is null) return Results.NotFound("Task not found");
@@ -188,12 +168,13 @@ tasks.MapPost("/{id}/take", async (
     return Results.Ok(task);
 });
 
+//обновляем таску
 tasks.MapPost("/{id}/submit", async (
     int id,
     ClaimsPrincipal userClaims,
     ApplicationDbContext db) =>
 {
-    var userId = int.Parse(userClaims.FindFirst("id")!.Value);
+    var userId = int.Parse(userClaims.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
     var task = await db.Tasks.FindAsync(id);
     if (task is null) return Results.NotFound("Task not found");
@@ -224,6 +205,7 @@ tasks.MapPut("/{id}", async (int id, TaskItem updatedTask, ApplicationDbContext 
     return Results.Ok(task);
 }).RequireAuthorization("AdminOnly");
 
+
 tasks.MapDelete("/{id}", async (int id, ApplicationDbContext db) =>
 {
     var task = await db.Tasks.FindAsync(id);
@@ -234,9 +216,42 @@ tasks.MapDelete("/{id}", async (int id, ApplicationDbContext db) =>
     return Results.NoContent();
 }).RequireAuthorization("AdminOnly");
 
+//оцениваем таску 
+tasks.MapPost("/{id}/review", async (
+    int id,
+    ReviewRequest reviewRequest,
+    ApplicationDbContext db) =>
+{
+    var task = await db.Tasks.Include(t => t.TakenByUser).FirstOrDefaultAsync(t => t.Id == id);
+    if (task is null) return Results.NotFound("Task not found");
 
+    if (reviewRequest.StatusByAdmin == "Approved")
+    {
+        task.Status = TaskMarketplace.API.Models.TaskStatus.Approved;
+        if (task.TakenByUserId.HasValue)
+        {
+            var user = await db.Users.FindAsync(task.TakenByUserId.Value);
+            if (user != null)
+            {
+                user.Points += task.Reward;
+                await db.SaveChangesAsync();
+            }
+        }
+    }
+    else if (reviewRequest.StatusByAdmin == "Rejected")
+    {
+        task.Status = TaskMarketplace.API.Models.TaskStatus.Rejected;
+    }
+    else
+    {
+        return Results.BadRequest("Invalid status. Allowed values: Approved, Rejected");
+    }
 
+    task.UpdatedAt = DateTime.UtcNow;
+    await db.SaveChangesAsync();
 
+    return Results.Ok(task);
+}).RequireAuthorization("AdminOnly");
 
 
 
@@ -253,3 +268,9 @@ bool VerifyPassword(string password, string hash) => HashPassword(password) == h
 
 
 app.Run();
+
+
+public class ReviewRequest
+{ 
+    public required string StatusByAdmin { get; set; }
+}
