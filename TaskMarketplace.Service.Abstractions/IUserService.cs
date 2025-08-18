@@ -1,0 +1,10 @@
+using TaskMarketplace.Contracts.Auth;
+
+namespace TaskMarketplace.Service.Abstractions;
+
+public interface IUserService
+{
+    Task<(bool Success, string? ErrorMessage)> RegisterAsync(RegisterRequest request);
+    Task<string?> LoginAsync(LoginRequest request); // returns JWT token or null
+    Task<int?> GetPointsAsync(int userId);
+}
