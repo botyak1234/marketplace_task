@@ -1,9 +1,10 @@
 using System.Text;
+using System.Reflection;
+using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using TaskMarketplace.DAL;
 using TaskMarketplace.Service;
@@ -22,15 +23,22 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskMarketplace API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { 
+        Title = "TaskMarketplace API", 
+        Version = "v1",
+        Description = "API для управления задачами и пользователями",
+    });
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        In = ParameterLocation.Header,
-        Description = "JWT Authorization header using the Bearer scheme. Example: \'Bearer {token}\'",
+        Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
         Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT"
     });
+    
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -45,17 +53,62 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
+
+
+    c.AddServer(new OpenApiServer { Url = "https://localhost:5000", Description = "Development server" });
+
+    try
+    {
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        c.IncludeXmlComments(xmlPath);
+    }
+    catch
+    {
+        Console.WriteLine("Не удалось загрузить XML-документацию основного проекта");
+    }
+    
+    try
+    {
+        var contractsXmlPath = Path.Combine(AppContext.BaseDirectory, "TaskMarketplace.Contracts.xml");
+        c.IncludeXmlComments(contractsXmlPath);
+    }
+    catch
+    {
+        Console.WriteLine("Не удалось загрузить XML-документацию Contracts проекта");
+    }
+    
+    try
+    {
+        var serviceXmlPath = Path.Combine(AppContext.BaseDirectory, "TaskMarketplace.Service.xml");
+        c.IncludeXmlComments(serviceXmlPath);
+    }
+    catch
+    {
+        Console.WriteLine("Не удалось загрузить XML-документацию Service проекта");
+    }
+    
+    c.EnableAnnotations();
+    c.OrderActionsBy(apiDesc => $"{apiDesc.ActionDescriptor.RouteValues["controller"]}_{apiDesc.HttpMethod}");
+    
+    c.UseAllOfToExtendReferenceSchemas();
+    c.UseAllOfForInheritance();
+    c.UseOneOfForPolymorphism();
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Services
 builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
-// Auth
+var jwtKey = builder.Configuration["Jwt:Key"];
+if (string.IsNullOrEmpty(jwtKey) || jwtKey.Length < 16)
+{
+    throw new InvalidOperationException("JWT ключ не настроен или слишком короткий (минимум 16 символов)");
+}
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -67,8 +120,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
         };
     });
 
@@ -80,13 +132,22 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsProduction())
+app.UseStaticFiles();
+app.UseSwagger();
+
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "TaskMarketplace API v1");
+    c.RoutePrefix = "";
+    c.DocumentTitle = "TaskMarketplace API Documentation";
+});
 
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+
+app.UseExceptionHandler("/error");
+app.Map("/error", () => Results.Problem("Произошла ошибка на сервере"));
+
 app.Run();

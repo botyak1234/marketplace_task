@@ -20,3 +20,15 @@ C:\Users\Пользователь\Desktop\TaskMarketplace\TaskMarketplace.Tools\
 C:\Users\Пользователь\Desktop\TaskMarketplace\TaskMarketplace.Tools\obj\Debug\net8.0\refint\TaskMarketplace.Tools.dll
 C:\Users\Пользователь\Desktop\TaskMarketplace\TaskMarketplace.Tools\obj\Debug\net8.0\TaskMarketplace.Tools.pdb
 C:\Users\Пользователь\Desktop\TaskMarketplace\TaskMarketplace.Tools\obj\Debug\net8.0\ref\TaskMarketplace.Tools.dll
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\bin\Debug\net8.0\TaskMarketplace.Tools.deps.json
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\bin\Debug\net8.0\TaskMarketplace.Tools.dll
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\bin\Debug\net8.0\TaskMarketplace.Tools.pdb
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\obj\Debug\net8.0\TaskMarketplace.Tools.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\obj\Debug\net8.0\TaskMarketplace.Tools.AssemblyInfoInputs.cache
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\obj\Debug\net8.0\TaskMarketplace.Tools.AssemblyInfo.cs
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\obj\Debug\net8.0\TaskMarketplace.Tools.csproj.CoreCompileInputs.cache
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\obj\Debug\net8.0\TaskMarketplace.Tools.sourcelink.json
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\obj\Debug\net8.0\TaskMarketplace.Tools.dll
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\obj\Debug\net8.0\refint\TaskMarketplace.Tools.dll
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\obj\Debug\net8.0\TaskMarketplace.Tools.pdb
+C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Tools\obj\Debug\net8.0\ref\TaskMarketplace.Tools.dll

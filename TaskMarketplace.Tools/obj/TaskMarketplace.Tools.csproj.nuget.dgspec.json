@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {}
+    "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {
+    "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
+        "projectUniqueName": "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
         "projectName": "TaskMarketplace.Tools",
-        "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
-        "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\obj\\",
+        "projectPath": "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
+        "packagesPath": "C:\\Users\\Danil\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Пользователь\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,6 +56,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.18, 8.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.18, 8.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.18, 8.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

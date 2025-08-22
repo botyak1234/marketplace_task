@@ -133,7 +133,7 @@ public class TaskService : ITaskService
         Title = t.Title,
         Description = t.Description,
         Reward = t.Reward,
-        Status = t.Status,
+        Status = t.Status.ToString(),
         TakenByUserId = t.TakenByUserId,
         CreatedAt = t.CreatedAt,
         UpdatedAt = t.UpdatedAt

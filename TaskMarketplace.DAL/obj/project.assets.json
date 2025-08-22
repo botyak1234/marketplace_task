@@ -732,24 +732,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Пользователь\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Danil\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj",
       "projectName": "TaskMarketplace.DAL",
-      "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj",
-      "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\obj\\",
+      "projectPath": "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj",
+      "packagesPath": "C:\\Users\\Danil\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Пользователь\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -763,8 +758,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
-              "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
+            "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
+              "projectPath": "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
             }
           }
         }
@@ -805,6 +800,20 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.18, 8.0.18]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.18, 8.0.18]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.18, 8.0.18]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

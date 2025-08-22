@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskMarketplace.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:TaskMarketplace.WebApi.Controllers.AuthController">
+            <summary>
+            Контроллер для аутентификации и регистрации пользователей
+            </summary>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.AuthController.Register(TaskMarketplace.Contracts.Auth.RegisterRequest)">
+            <summary>
+            Регистрация нового пользователя
+            </summary>
+            <param name="request">Данные для регистрации</param>
+            <returns>Результат операции регистрации</returns>
+            <response code="200">Пользователь успешно зарегистрирован</response>
+            <response code="400">Неверные данные для регистрации</response>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.AuthController.Login(TaskMarketplace.Contracts.Auth.LoginRequest)">
+            <summary>
+            Аутентификация пользователя
+            </summary>
+            <param name="request">Данные для входа</param>
+            <returns>JWT токен для аутентифицированного пользователя</returns>
+            <response code="200">Успешная аутентификация, возвращает JWT токен</response>
+            <response code="401">Неверные учетные данные</response>
+        </member>
+        <member name="T:TaskMarketplace.WebApi.Controllers.MeController">
+            <summary>
+            Контроллер для работы с данными текущего пользователя
+            </summary>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.MeController.GetPoints">
+            <summary>
+            Получение количества баллов текущего пользователя
+            </summary>
+            <returns>Количество баллов пользователя</returns>
+            <response code="200">Успешное получение баллов</response>
+            <response code="401">Пользователь не аутентифицирован</response>
+            <response code="404">Пользователь не найден</response>
+        </member>
+        <member name="T:TaskMarketplace.WebApi.Controllers.TasksController">
+            <summary>
+            Контроллер для управления задачами
+            </summary>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.GetAll">
+            <summary>
+            Получение списка всех задач
+            </summary>
+            <returns>Список задач</returns>
+            <remarks>
+            Для обычных пользователей возвращаются только их собственные задачи или свободные задачи.
+            Администраторы видят все задачи.
+            </remarks>
+            <response code="200">Успешное получение списка задач</response>
+            <response code="401">Пользователь не аутентифицирован</response>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.GetById(System.Int32)">
+            <summary>
+            Получение задачи по идентификатору
+            </summary>
+            <param name="id">Идентификатор задачи</param>
+            <returns>Задача с указанным идентификатором</returns>
+            <response code="200">Успешное получение задачи</response>
+            <response code="401">Пользователь не аутентифицирован</response>
+            <response code="404">Задача не найдена</response>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.Create(TaskMarketplace.Contracts.Tasks.CreateTaskRequest)">
+            <summary>
+            Создание новой задачи (только для администраторов)
+            </summary>
+            <param name="request">Данные для создания задачи</param>
+            <returns>Созданная задача</returns>
+            <response code="201">Задача успешно создана</response>
+            <response code="400">Неверные данные для создания задачи</response>
+            <response code="401">Пользователь не аутентифицирован</response>
+            <response code="403">Недостаточно прав для создания задачи</response>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.Update(System.Int32,TaskMarketplace.Contracts.Tasks.UpdateTaskRequest)">
+            <summary>
+            Обновление задачи (только для администраторов)
+            </summary>
+            <param name="id">Идентификатор задачи</param>
+            <param name="request">Данные для обновления задачи</param>
+            <returns>Результат операции обновления</returns>
+            <response code="200">Задача успешно обновлена</response>
+            <response code="400">Неверные данные для обновления задачи</response>
+            <response code="401">Пользователь не аутентифицирован</response>
+            <response code="403">Недостаточно прав для обновления задачи</response>
+            <response code="404">Задача не найдена</response>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.Delete(System.Int32)">
+            <summary>
+            Удаление задачи (только для администраторов)
+            </summary>
+            <param name="id">Идентификатор задачи</param>
+            <returns>Результат операции удаления</returns>
+            <response code="204">Задача успешно удалена</response>
+            <response code="401">Пользователь не аутентифицирован</response>
+            <response code="403">Недостаточно прав для удаления задачи</response>
+            <response code="404">Задача не найдена</response>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.Take(System.Int32)">
+            <summary>
+            Взятие задачи в работу
+            </summary>
+            <param name="id">Идентификатор задачи</param>
+            <returns>Обновленная задача</returns>
+            <response code="200">Задача успешно взята в работу</response>
+            <response code="400">Невозможно взять задачу (уже занята или неверный статус)</response>
+            <response code="401">Пользователь не аутентифицирован</response>
+            <response code="404">Задача не найдена</response>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.Submit(System.Int32)">
+            <summary>
+            Отправка задачи на проверку
+            </summary>
+            <param name="id">Идентификатор задачи</param>
+            <returns>Обновленная задача</returns>
+            <response code="200">Задача успешно отправлена на проверку</response>
+            <response code="400">Невозможно отправить задачу (не взята пользователем или неверный статус)</response>
+            <response code="401">Пользователь не аутентифицирован</response>
+            <response code="404">Задача не найдена</response>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.Review(System.Int32,TaskMarketplace.Contracts.Tasks.ReviewRequest)">
+            <summary>
+            Проверка задачи администратором (только для администраторов)
+            </summary>
+            <param name="id">Идентификатор задачи</param>
+            <param name="request">Решение по задаче</param>
+            <returns>Обновленная задача</returns>
+            <response code="200">Задача успешно проверена</response>
+            <response code="400">Неверный статус проверки</response>
+            <response code="401">Пользователь не аутентифицирован</response>
+            <response code="403">Недостаточно прав для проверки задачи</response>
+            <response code="404">Задача не найдена</response>
+        </member>
+    </members>
+</doc>
