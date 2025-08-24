@@ -34,3 +34,17 @@ C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\D
 C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.xml
 C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.pdb
 C:\Users\Danil\OneDrive\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\ref\TaskMarketplace.Contracts.dll
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\bin\Debug\net8.0\TaskMarketplace.Contracts.deps.json
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\bin\Debug\net8.0\TaskMarketplace.Contracts.dll
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\bin\Debug\net8.0\TaskMarketplace.Contracts.pdb
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\bin\Debug\net8.0\TaskMarketplace.Contracts.xml
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.AssemblyInfoInputs.cache
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.AssemblyInfo.cs
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.sourcelink.json
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.dll
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\refint\TaskMarketplace.Contracts.dll
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.xml
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\TaskMarketplace.Contracts.pdb
+C:\Users\Пользователь\Desktop\marketplace_task\TaskMarketplace.Contracts\obj\Debug\net8.0\ref\TaskMarketplace.Contracts.dll

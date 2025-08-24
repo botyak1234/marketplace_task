@@ -11,5 +11,5 @@ public class AuthResponse
     /// JWT токен для доступа к API
     /// </summary>
     [Required]
-    public string Token { get; set; }
+    public required string Token { get; set; }
 }

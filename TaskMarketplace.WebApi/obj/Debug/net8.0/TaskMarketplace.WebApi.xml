@@ -138,5 +138,15 @@
             <response code="403">Недостаточно прав для проверки задачи</response>
             <response code="404">Задача не найдена</response>
         </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.GetByStatus(System.String)">
+            <summary>
+            Получение задач по статусу
+            </summary>
+        </member>
+        <member name="M:TaskMarketplace.WebApi.Controllers.TasksController.GetSorted(System.String,System.String)">
+            <summary>
+            Получение задач с сортировкой
+            </summary>
+        </member>
     </members>
 </doc>

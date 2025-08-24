@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4Zn+dP7SLAs=",
+  "dgSpecHash": "1sa+Uja0yqI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Danil\\OneDrive\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Danil\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.18\\microsoft.netcore.app.ref.8.0.18.nupkg.sha512",
-    "C:\\Users\\Danil\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.18\\microsoft.windowsdesktop.app.ref.8.0.18.nupkg.sha512",
-    "C:\\Users\\Danil\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.18\\microsoft.aspnetcore.app.ref.8.0.18.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

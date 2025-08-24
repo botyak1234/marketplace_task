@@ -11,11 +11,11 @@ public class LoginRequest
     /// Имя пользователя
     /// </summary>
     [Required]
-    public string Username { get; set; }
+    public required string Username { get; set; }
     
     /// <summary>
     /// Пароль
     /// </summary>
     [Required]
-    public string Password { get; set; }
+    public required string Password { get; set; }
 }

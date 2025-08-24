@@ -6,13 +6,13 @@ namespace TaskMarketplace.Contracts.Tasks;
 
 // <summary>
 /// Запрос на создание новой задачи
-/// </summary>
+//</summary>
 public class CreateTaskRequest
 {
     /// <summary>
     /// Название задачи
     /// </summary>
-    /// <example>Implement user profile page</example>
+    /// <example>Кастомизация профиля</example>
     [Required(ErrorMessage = "Title is required")]
     [StringLength(100, MinimumLength = 3, ErrorMessage = "Title must be between 3 and 100 characters")]
     public required string Title { get; set; }
@@ -20,7 +20,7 @@ public class CreateTaskRequest
     /// <summary>
     /// Описание задачи
     /// </summary>
-    /// <example>Create a user profile page with avatar upload functionality</example>
+    /// <example>Аватар для пользователя</example>
     [Required(ErrorMessage = "Description is required")]
     [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters")]
     public required string Description { get; set; }

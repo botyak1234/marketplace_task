@@ -9,6 +9,14 @@ using System.Text.Json.Serialization;
 using TaskMarketplace.DAL;
 using TaskMarketplace.Service;
 using TaskMarketplace.Service.Abstractions;
+using FluentValidation.AspNetCore;
+using TaskMarketplace.WebApi.Validators.Auth;
+using TaskMarketplace.WebApi.Validators.Tasks;
+using FluentValidation;
+using TaskMarketplace.DAL.Repositories;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -96,9 +104,21 @@ builder.Services.AddSwaggerGen(c =>
     c.UseOneOfForPolymorphism();
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
@@ -129,7 +149,10 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
     options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
 });
-
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<LoginRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateTaskRequestValidator>();
 var app = builder.Build();
 
 app.UseStaticFiles();

@@ -1,7 +1,6 @@
-using Microsoft.EntityFrameworkCore;
 using TaskMarketplace.Contracts.Auth;
-using TaskMarketplace.DAL;
 using TaskMarketplace.DAL.Models;
+using TaskMarketplace.DAL.Repositories;
 using TaskMarketplace.Service.Abstractions;
 using TaskMarketplace.Tools;
 
@@ -9,18 +8,18 @@ namespace TaskMarketplace.Service;
 
 public class UserService : IUserService
 {
-    private readonly ApplicationDbContext _db;
+    private readonly IUserRepository _userRepository;
     private readonly ITokenService _tokenService;
 
-    public UserService(ApplicationDbContext db, ITokenService tokenService)
+    public UserService(IUserRepository userRepository, ITokenService tokenService)
     {
-        _db = db;
+        _userRepository = userRepository;
         _tokenService = tokenService;
     }
 
     public async Task<(bool Success, string? ErrorMessage)> RegisterAsync(RegisterRequest request)
     {
-        var exists = await _db.Users.AnyAsync(u => u.Username == request.Username);
+        var exists = await _userRepository.AnyAsync(u => u.Username == request.Username);
         if (exists) return (false, "Username already taken");
 
         var user = new User(
@@ -30,14 +29,15 @@ public class UserService : IUserService
             0
         );
 
-        _db.Users.Add(user);
-        await _db.SaveChangesAsync();
+        await _userRepository.CreateAsync(user);
+        await _userRepository.SaveChangesAsync();
+        
         return (true, null);
     }
 
     public async Task<string?> LoginAsync(LoginRequest request)
     {
-        var user = await _db.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
+        var user = await _userRepository.GetByUsernameAsync(request.Username);
         if (user == null) return null;
 
         if (!PasswordHasher.VerifyPassword(request.Password, user.PasswordHash)) return null;
@@ -47,7 +47,7 @@ public class UserService : IUserService
 
     public async Task<int?> GetPointsAsync(int userId)
     {
-        var user = await _db.Users.FindAsync(userId);
+        var user = await _userRepository.GetByIdAsync(userId);
         return user?.Points;
     }
 }

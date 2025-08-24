@@ -11,11 +11,11 @@ public class RegisterRequest
     /// Имя пользователя
     /// </summary>
     [Required]
-    public string Username { get; set; }
+    public required string Username { get; set; }
     
     /// <summary>
     /// Хеш пароля
     /// </summary>
     [Required]
-    public string HashPassword { get; set; }
+    public required string HashPassword { get; set; }
 }

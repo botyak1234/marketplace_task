@@ -74,7 +74,9 @@
             Задача отклонена администратором
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:TaskMarketplace.Contracts.Tasks.CreateTaskRequest" -->
+        <member name="T:TaskMarketplace.Contracts.Tasks.CreateTaskRequest">
+            Запрос на создание новой задачи
+        </member>
         <member name="P:TaskMarketplace.Contracts.Tasks.CreateTaskRequest.Title">
             <summary>
             Название задачи
@@ -159,7 +161,9 @@
             Дата последнего обновления задачи
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest" -->
+        <member name="T:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest">
+            Запрос на обновление задачи
+        </member>
         <member name="P:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest.Title">
             <summary>
             Название задачи

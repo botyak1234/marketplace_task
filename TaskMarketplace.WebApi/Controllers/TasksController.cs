@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskMarketplace.Contracts.Tasks;
 using TaskMarketplace.Service.Abstractions;
 using System.ComponentModel.DataAnnotations;
+using TaskMarketplace.Contracts.Enums;
 
 namespace TaskMarketplace.WebApi.Controllers;
 
@@ -193,5 +194,33 @@ public class TasksController : ControllerBase
         var updated = await _taskService.ReviewAsync(id, request.StatusByAdmin);
         if (updated is null) return BadRequest("Invalid status. Allowed values: Approved, Rejected");
         return Ok(updated);
+    }
+
+
+    /// <summary>
+    /// Получение задач по статусу
+    /// </summary>
+
+    [HttpGet("by-status")]
+    [ProducesResponseType(typeof(List<TaskDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetByStatus([FromQuery] string status)
+    {
+        var tasks = await _taskService.GetByStatusAsync(status);
+        if (tasks is null)
+            return BadRequest($"Invalid status. Allowed values: {string.Join(", ", Enum.GetNames(typeof(MarketplaceTaskStatus)))}");
+
+        return Ok(tasks);
+    }
+
+    /// <summary>
+    /// Получение задач с сортировкой
+    /// </summary>
+    [HttpGet("sorted")]
+    [ProducesResponseType(typeof(List<TaskDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetSorted([FromQuery] string? sortBy, [FromQuery] string? order)
+    {
+        var tasks = await _taskService.GetSortedAsync(sortBy, order);
+        return Ok(tasks);
     }
 }

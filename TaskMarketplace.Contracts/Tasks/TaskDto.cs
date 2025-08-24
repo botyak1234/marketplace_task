@@ -15,12 +15,12 @@ public class TaskDto
     /// <summary>
     /// Заголовок задачи
     /// </summary>
-    public string Title { get; set; }
+    public required string Title { get; set; }
     
     /// <summary>
     /// Описание задачи
     /// </summary>
-    public string Description { get; set; }
+    public required string Description { get; set; }
     
     /// <summary>
     /// Награда за выполнение задачи
@@ -30,7 +30,7 @@ public class TaskDto
     /// <summary>
     /// Статус задачи
     /// </summary>
-    public string Status { get; set; }
+    public required string Status { get; set; }
     
     /// <summary>
     /// Идентификатор пользователя, взявшего задачу

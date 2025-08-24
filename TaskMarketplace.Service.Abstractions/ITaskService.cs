@@ -12,5 +12,7 @@ public interface ITaskService
     Task<bool> DeleteAsync(int id);
     Task<TaskDto?> TakeAsync(int id, int userId);
     Task<TaskDto?> SubmitAsync(int id, int userId);
-    Task<TaskDto?> ReviewAsync(int id, string statusByAdmin);
+    Task<TaskDto?> ReviewAsync(int id, ReviewStatus statusByAdmin);
+    Task<List<TaskDto>?> GetByStatusAsync(string status);
+    Task<List<TaskDto>> GetSortedAsync(string? sortBy, string? order);
 }

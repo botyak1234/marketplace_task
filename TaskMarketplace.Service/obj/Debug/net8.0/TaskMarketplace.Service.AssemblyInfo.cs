@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskMarketplace.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1afe461e34cad5db5aedd88b99712f6289b9291")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d52f3ddb371ae00b822f8bd0e8346b80a580e15")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskMarketplace.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskMarketplace.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
