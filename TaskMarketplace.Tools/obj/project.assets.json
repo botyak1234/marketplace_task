@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
+      "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
       "projectName": "TaskMarketplace.Tools",
-      "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
+      "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
       "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\obj\\",
+      "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

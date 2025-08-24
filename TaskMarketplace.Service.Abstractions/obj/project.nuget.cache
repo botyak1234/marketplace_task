@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2g/DUk+MNlg=",
+  "dgSpecHash": "mo+th56Wm7g=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj",
+  "projectFilePath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.8\\microsoft.entityframeworkcore.8.0.8.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.8\\microsoft.entityframeworkcore.abstractions.8.0.8.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {}
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
         "projectName": "TaskMarketplace.Contracts",
-        "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
+        "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
         "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

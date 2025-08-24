@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.WebApi\\TaskMarketplace.WebApi.csproj": {}
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\TaskMarketplace.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
         "projectName": "TaskMarketplace.Contracts",
-        "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
+        "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj",
         "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj": {
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj",
         "projectName": "TaskMarketplace.DAL",
-        "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj",
+        "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj",
         "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\obj\\",
+        "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,8 +97,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
               }
             }
           }
@@ -148,14 +148,14 @@
         }
       }
     },
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj": {
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj",
+        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj",
         "projectName": "TaskMarketplace.Service.Abstractions",
-        "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj",
+        "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj",
         "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service.Abstractions\\obj\\",
+        "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -176,11 +176,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
               },
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj"
               }
             }
           }
@@ -220,14 +220,14 @@
         }
       }
     },
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj": {
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj",
+        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj",
         "projectName": "TaskMarketplace.Service",
-        "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj",
+        "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj",
         "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service\\obj\\",
+        "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -248,17 +248,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
               },
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj"
               },
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj"
               },
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj"
               }
             }
           }
@@ -312,14 +312,14 @@
         }
       }
     },
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
+        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
         "projectName": "TaskMarketplace.Tools",
-        "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
+        "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj",
         "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\obj\\",
+        "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -377,14 +377,14 @@
         }
       }
     },
-    "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.WebApi\\TaskMarketplace.WebApi.csproj": {
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\TaskMarketplace.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.WebApi\\TaskMarketplace.WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\TaskMarketplace.WebApi.csproj",
         "projectName": "TaskMarketplace.WebApi",
-        "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.WebApi\\TaskMarketplace.WebApi.csproj",
+        "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\TaskMarketplace.WebApi.csproj",
         "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.WebApi\\obj\\",
+        "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -405,20 +405,20 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj"
               },
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.DAL\\TaskMarketplace.DAL.csproj"
               },
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service.Abstractions\\TaskMarketplace.Service.Abstractions.csproj"
               },
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj"
               },
-              "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {
-                "projectPath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj"
+              "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj": {
+                "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Tools\\TaskMarketplace.Tools.csproj"
               }
             }
           }
@@ -439,6 +439,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.1, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.10, )"
@@ -459,7 +467,23 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.6.2, )"
+              "version": "[9.0.3, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[9.0.3, )"
             }
           },
           "imports": [

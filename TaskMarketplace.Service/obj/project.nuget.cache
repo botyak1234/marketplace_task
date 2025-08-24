@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VyNo/hDrwIQ=",
+  "dgSpecHash": "Pq5J5vr+sn0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Пользователь\\Desktop\\TaskMarketplace\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj",
+  "projectFilePath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Service\\TaskMarketplace.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.bcl.timeprovider\\8.0.1\\microsoft.bcl.timeprovider.8.0.1.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.8\\microsoft.entityframeworkcore.8.0.8.nupkg.sha512",

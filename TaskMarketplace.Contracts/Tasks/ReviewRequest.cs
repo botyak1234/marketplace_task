@@ -1,7 +1,15 @@
-namespace TaskMarketplace.Contracts.Tasks;
+using TaskMarketplace.Contracts.Enums;
 
+namespace TaskMarketplace.Contracts.Tasks;
+/// <summary>
+/// Запрос на проверку задачи администратором
+/// </summary>
 public class ReviewRequest
+
 {
-    
-    public required string StatusByAdmin { get; set; }
+    /// <summary>
+    /// Статус, установленный администратором
+    /// </summary>
+    /// <example>Approved</example>
+    public ReviewStatus StatusByAdmin { get; set; }
 }

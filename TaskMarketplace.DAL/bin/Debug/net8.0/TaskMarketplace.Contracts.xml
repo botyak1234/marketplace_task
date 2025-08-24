@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskMarketplace.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:TaskMarketplace.Contracts.Auth.AuthResponse">
+            <summary>
+            Модель ответа аутентификации
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Auth.AuthResponse.Token">
+            <summary>
+            JWT токен для доступа к API
+            </summary>
+        </member>
+        <member name="T:TaskMarketplace.Contracts.Auth.LoginRequest">
+            <summary>
+            Модель запроса на аутентификацию
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Auth.LoginRequest.Username">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Auth.LoginRequest.Password">
+            <summary>
+            Пароль
+            </summary>
+        </member>
+        <member name="T:TaskMarketplace.Contracts.Auth.RegisterRequest">
+            <summary>
+            Модель запроса на регистрацию
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Auth.RegisterRequest.Username">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Auth.RegisterRequest.HashPassword">
+            <summary>
+            Хеш пароля
+            </summary>
+        </member>
+        <member name="T:TaskMarketplace.Contracts.Enums.MarketplaceTaskStatus">
+            <summary>
+            Статусы задач в системе
+            </summary>
+        </member>
+        <member name="F:TaskMarketplace.Contracts.Enums.MarketplaceTaskStatus.New">
+            <summary>
+            Новая задача, доступная для взятия
+            </summary>
+        </member>
+        <member name="F:TaskMarketplace.Contracts.Enums.MarketplaceTaskStatus.Taken">
+            <summary>
+            Задача взята пользователем в работу
+            </summary>
+        </member>
+        <member name="F:TaskMarketplace.Contracts.Enums.MarketplaceTaskStatus.Submitted">
+            <summary>
+            Задача выполнена и отправлена на проверку
+            </summary>
+        </member>
+        <member name="F:TaskMarketplace.Contracts.Enums.MarketplaceTaskStatus.Approved">
+            <summary>
+            Задача одобрена администратором
+            </summary>
+        </member>
+        <member name="F:TaskMarketplace.Contracts.Enums.MarketplaceTaskStatus.Rejected">
+            <summary>
+            Задача отклонена администратором
+            </summary>
+        </member>
+        <member name="T:TaskMarketplace.Contracts.Tasks.CreateTaskRequest">
+            Запрос на создание новой задачи
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.CreateTaskRequest.Title">
+            <summary>
+            Название задачи
+            </summary>
+            <example>Implement user profile page</example>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.CreateTaskRequest.Description">
+            <summary>
+            Описание задачи
+            </summary>
+            <example>Create a user profile page with avatar upload functionality</example>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.CreateTaskRequest.Reward">
+            <summary>
+            Награда за выполнение задачи (в баллах)
+            </summary>
+            <example>100</example>
+        </member>
+        <member name="T:TaskMarketplace.Contracts.Tasks.PointsResponse">
+            <summary>
+            Модель ответа с баллами пользователя
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.PointsResponse.Points">
+            <summary>
+            Количество баллов пользователя
+            </summary>
+        </member>
+        <member name="T:TaskMarketplace.Contracts.Tasks.ReviewRequest">
+            <summary>
+            Запрос на проверку задачи администратором
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.ReviewRequest.StatusByAdmin">
+            <summary>
+            Статус, установленный администратором
+            </summary>
+            <example>Approved</example>
+        </member>
+        <member name="T:TaskMarketplace.Contracts.Tasks.TaskDto">
+            <summary>
+            Модель данных задачи
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.TaskDto.Id">
+            <summary>
+            Идентификатор задачи
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.TaskDto.Title">
+            <summary>
+            Заголовок задачи
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.TaskDto.Description">
+            <summary>
+            Описание задачи
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.TaskDto.Reward">
+            <summary>
+            Награда за выполнение задачи
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.TaskDto.Status">
+            <summary>
+            Статус задачи
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.TaskDto.TakenByUserId">
+            <summary>
+            Идентификатор пользователя, взявшего задачу
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.TaskDto.CreatedAt">
+            <summary>
+            Дата создания задачи
+            </summary>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.TaskDto.UpdatedAt">
+            <summary>
+            Дата последнего обновления задачи
+            </summary>
+        </member>
+        <member name="T:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest">
+            Запрос на обновление задачи
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest.Title">
+            <summary>
+            Название задачи
+            </summary>
+            <example>Fix authentication bug</example>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest.Description">
+            <summary>
+            Описание задачи
+            </summary>
+            <example>Fix the issue with JWT token expiration</example>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest.Reward">
+            <summary>
+            Награда за выполнение задачи (в баллах)
+            </summary>
+            <example>50</example>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest.Status">
+            <summary>
+            Статус задачи
+            </summary>
+            <example>InProgress</example>
+        </member>
+        <member name="P:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest.TakenByUserId">
+            <summary>
+            ID пользователя, взявшего задачу (опционально)
+            </summary>
+            <example>5</example>
+        </member>
+    </members>
+</doc>
