@@ -1,9 +1,9 @@
-using TaskMarketplace.Contracts;
 using TaskMarketplace.Contracts.Enums;
 using TaskMarketplace.Contracts.Tasks;
 using TaskMarketplace.DAL.Models;
-using TaskMarketplace.DAL.Repositories;
+using TaskMarketplace.DAL.Abstractions;
 using TaskMarketplace.Service.Abstractions;
+using TaskMarketplace.Service.Mappings;
 
 namespace TaskMarketplace.Service;
 
@@ -18,105 +18,109 @@ public class TaskService : ITaskService
         _userRepository = userRepository;
     }
 
-    public async Task<List<TaskDto>> GetAllAsync(int userId, string? role)
+    public async Task<List<TaskDto>> GetAllAsync(int userId, string? role, CancellationToken cancellationToken = default)
     {
         List<TaskItem> tasks;
         
         if (string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase))
         {
-            tasks = await _taskRepository.GetAllWithUserAsync();
+            tasks = await _taskRepository.GetAllWithUserAsync(cancellationToken);
         }
         else
         {
-            tasks = await _taskRepository.GetByUserIdOrNotTakenAsync(userId);
+            tasks = await _taskRepository.GetByUserIdOrNotTakenAsync(userId, cancellationToken);
         }
 
-        return tasks.Select(Map).ToList();
+        return tasks.Select(TaskMapping.Map).ToList();
     }
 
-    public async Task<TaskDto?> GetByIdAsync(int id)
+    public async Task<TaskDto> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+{
+        var task = await _taskRepository.GetByIdWithUserAsync(id, cancellationToken);
+        if (task == null) throw new Exception("Задача не найдена");
+        return TaskMapping.Map(task);
+}
+
+    public async Task<TaskDto> CreateAsync(CreateTaskRequest request, CancellationToken cancellationToken = default)
     {
-        var task = await _taskRepository.GetByIdWithUserAsync(id);
-        return task is null ? null : Map(task);
+        var task = new TaskItem(request.Title, request.Description, request.Reward);
+
+        await _taskRepository.CreateAsync(task, cancellationToken);
+        await _taskRepository.SaveChangesAsync(cancellationToken);
+
+        return TaskMapping.Map(task);
     }
 
-    public async Task<TaskDto> CreateAsync(CreateTaskRequest request)
+    public async Task<bool> UpdateAsync(int id, UpdateTaskRequest request, CancellationToken cancellationToken = default)
     {
-        var entity = new TaskItem(request.Title, request.Description, request.Reward);
+        var task = await _taskRepository.GetByIdAsync(id, cancellationToken);
+        if (task is null) return false;
 
-        await _taskRepository.CreateAsync(entity);
-        await _taskRepository.SaveChangesAsync();
+        task.Title = request.Title;
+        task.Description = request.Description;
+        task.Reward = request.Reward;
+        task.Status = request.Status;
+        task.TakenByUserId = request.TakenByUserId;
+        task.UpdatedAt = DateTime.UtcNow;
 
-        return Map(entity);
-    }
-
-    public async Task<bool> UpdateAsync(int id, UpdateTaskRequest request)
-    {
-        var entity = await _taskRepository.GetByIdAsync(id);
-        if (entity is null) return false;
-
-        entity.Title = request.Title;
-        entity.Description = request.Description;
-        entity.Reward = request.Reward;
-        entity.Status = request.Status;
-        entity.TakenByUserId = request.TakenByUserId;
-        entity.UpdatedAt = DateTime.UtcNow;
-
-        _taskRepository.Update(entity);
-        await _taskRepository.SaveChangesAsync();
+        _taskRepository.Update(task);
+        await _taskRepository.SaveChangesAsync(cancellationToken);
         return true;
     }
 
-    public async Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default)
     {
-        var entity = await _taskRepository.GetByIdAsync(id);
-        if (entity is null) return false;
+        var task = await _taskRepository.GetByIdAsync(id, cancellationToken);
+        if (task is null) return false;
 
-        _taskRepository.Delete(entity);
-        await _taskRepository.SaveChangesAsync();
+        _taskRepository.Delete(task);
+        await _taskRepository.SaveChangesAsync(cancellationToken);
         return true;
     }
 
-    public async Task<TaskDto?> TakeAsync(int id, int userId)
-    {
-        var task = await _taskRepository.GetByIdAsync(id);
-        if (task is null) return null;
-        if (task.TakenByUserId != null) return null;
-        if (task.Status != MarketplaceTaskStatus.New) return null;
+    public async Task<TaskDto> TakeAsync(int id, int userId, CancellationToken cancellationToken = default)
+{
+        var task = await _taskRepository.GetByIdAsync(id, cancellationToken);
+        if (task == null) throw new Exception("Задача не найдена");
+        
+        if (task.TakenByUserId != null) throw new Exception("Задача уже взята");
+        if (task.Status != MarketplaceTaskStatus.New) throw new Exception("Задача не доступна");
 
         task.TakenByUserId = userId;
         task.Status = MarketplaceTaskStatus.Taken;
         task.UpdatedAt = DateTime.UtcNow;
         
         _taskRepository.Update(task);
-        await _taskRepository.SaveChangesAsync();
+        await _taskRepository.SaveChangesAsync(cancellationToken);
         
-        // Получаем обновленную задачу с информацией о пользователе
-        var updatedTask = await _taskRepository.GetByIdWithUserAsync(id);
-        return updatedTask is null ? null : Map(updatedTask);
-    }
+        var updatedTask = await _taskRepository.GetByIdWithUserAsync(id, cancellationToken);
+        if (updatedTask == null) throw new Exception("Задача не найдена");
+        return TaskMapping.Map(updatedTask);
+}
 
-    public async Task<TaskDto?> SubmitAsync(int id, int userId)
-    {
-        var task = await _taskRepository.GetByIdAsync(id);
-        if (task is null) return null;
-        if (task.TakenByUserId != userId) return null;
-        if (task.Status != MarketplaceTaskStatus.Taken) return null;
+    public async Task<TaskDto> SubmitAsync(int id, int userId, CancellationToken cancellationToken = default)
+{
+        var task = await _taskRepository.GetByIdAsync(id, cancellationToken);
+        if (task == null) throw new Exception("Задача не найдена");
+        
+        if (task.TakenByUserId != userId) throw new Exception("Задача вам не принадлежит");
+        if (task.Status != MarketplaceTaskStatus.Taken) throw new Exception("Задача не взята");
 
         task.Status = MarketplaceTaskStatus.Submitted;
         task.UpdatedAt = DateTime.UtcNow;
         
         _taskRepository.Update(task);
-        await _taskRepository.SaveChangesAsync();
+        await _taskRepository.SaveChangesAsync(cancellationToken);
         
-        var updatedTask = await _taskRepository.GetByIdWithUserAsync(id);
-        return updatedTask is null ? null : Map(updatedTask);
-    }
+        var updatedTask = await _taskRepository.GetByIdWithUserAsync(id, cancellationToken);
+        if (updatedTask == null) throw new Exception("Задача не найдена");
+        return TaskMapping.Map(updatedTask);
+}
 
-    public async Task<TaskDto?> ReviewAsync(int id, ReviewStatus statusByAdmin)
-    {
-        var task = await _taskRepository.GetByIdWithUserAsync(id);
-        if (task is null) return null;
+    public async Task<TaskDto> ReviewAsync(int id, ReviewStatus statusByAdmin, CancellationToken cancellationToken = default)
+{
+        var task = await _taskRepository.GetByIdWithUserAsync(id, cancellationToken);
+        if (task == null) throw new Exception("Задача не найдена");
 
         switch (statusByAdmin)
         {
@@ -124,7 +128,7 @@ public class TaskService : ITaskService
                 task.Status = MarketplaceTaskStatus.Approved;
                 if (task.TakenByUserId.HasValue)
                 {
-                    var user = await _userRepository.GetByIdAsync(task.TakenByUserId.Value);
+                    var user = await _userRepository.GetByIdAsync(task.TakenByUserId.Value, cancellationToken);
                     if (user != null)
                     {
                         user.Points += task.Reward;
@@ -136,40 +140,30 @@ public class TaskService : ITaskService
                 task.Status = MarketplaceTaskStatus.Rejected;
                 break;
             default:
-                return null;
+                throw new Exception("Неверный статус оценки");
         }
 
         task.UpdatedAt = DateTime.UtcNow;
         _taskRepository.Update(task);
-        await _taskRepository.SaveChangesAsync();
-        await _userRepository.SaveChangesAsync();
+        await _taskRepository.SaveChangesAsync(cancellationToken);
+        await _userRepository.SaveChangesAsync(cancellationToken);
         
-        return Map(task);
+        return TaskMapping.Map(task);
+}
+    public async Task<List<TaskDto>> GetByStatusAsync(string status, CancellationToken cancellationToken = default)
+    {
+        if (!Enum.TryParse<TaskStatus>(status, true, out var parsedStatus))
+            throw new Exception("Неправильный статус");
+
+        var marketplaceStatus = (MarketplaceTaskStatus)parsedStatus;
+        var tasks = await _taskRepository.GetByStatusAsync(marketplaceStatus, cancellationToken);
+        
+        return tasks.Select(TaskMapping.Map).ToList();
     }
 
-    public async Task<List<TaskDto>?> GetByStatusAsync(string status)
+    public async Task<List<TaskDto>> GetSortedAsync(string? sortBy, string? order, CancellationToken cancellationToken = default)
     {
-        if (!Enum.TryParse<MarketplaceTaskStatus>(status, true, out var parsedStatus))
-            return null;
-
-        var tasks = await _taskRepository.GetByStatusAsync(parsedStatus);
-        
-        return tasks.Select(t => new TaskDto
-        {
-            Id = t.Id,
-            Title = t.Title,
-            Description = t.Description,
-            Reward = t.Reward,
-            Status = t.Status.ToString(),
-            TakenByUserId = t.TakenByUserId,
-            CreatedAt = t.CreatedAt,
-            UpdatedAt = t.UpdatedAt
-        }).ToList();
-    }
-
-    public async Task<List<TaskDto>> GetSortedAsync(string? sortBy, string? order)
-    {
-        var tasks = await _taskRepository.GetAllWithUserAsync();
+        var tasks = await _taskRepository.GetAllWithUserAsync(cancellationToken);
         bool desc = string.Equals(order, "desc", StringComparison.OrdinalIgnoreCase);
 
         var sortedTasks = sortBy?.ToLower() switch
@@ -179,28 +173,6 @@ public class TaskService : ITaskService
             _ => tasks.OrderBy(t => t.Id)
         };
 
-        return sortedTasks.Select(t => new TaskDto
-        {
-            Id = t.Id,
-            Title = t.Title,
-            Description = t.Description,
-            Reward = t.Reward,
-            Status = t.Status.ToString(),
-            TakenByUserId = t.TakenByUserId,
-            CreatedAt = t.CreatedAt,
-            UpdatedAt = t.UpdatedAt
-        }).ToList();
+        return sortedTasks.Select(TaskMapping.Map).ToList();
     }
-
-    private static TaskDto Map(TaskItem t) => new()
-    {
-        Id = t.Id,
-        Title = t.Title,
-        Description = t.Description,
-        Reward = t.Reward,
-        Status = t.Status.ToString(),
-        TakenByUserId = t.TakenByUserId,
-        CreatedAt = t.CreatedAt,
-        UpdatedAt = t.UpdatedAt
-    };
 }

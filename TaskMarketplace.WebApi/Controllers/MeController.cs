@@ -21,6 +21,7 @@ public class MeController : ControllerBase
     /// <summary>
     /// Получение количества баллов текущего пользователя
     /// </summary>
+    /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Количество баллов пользователя</returns>
     /// <response code="200">Успешное получение баллов</response>
     /// <response code="401">Пользователь не аутентифицирован</response>
@@ -29,10 +30,10 @@ public class MeController : ControllerBase
     [ProducesResponseType(typeof(PointsResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPoints()
+    public async Task<IActionResult> GetPoints(CancellationToken cancellationToken)
     {
         var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-        var points = await _userService.GetPointsAsync(userId);
+        var points = await _userService.GetPointsAsync(userId, cancellationToken);
         if (points is null) return NotFound("User not found");
         return Ok(new { points });
     }

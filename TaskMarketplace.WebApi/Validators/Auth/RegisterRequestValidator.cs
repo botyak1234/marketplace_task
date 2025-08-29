@@ -15,7 +15,7 @@ namespace TaskMarketplace.WebApi.Validators.Auth
 
             RuleFor(x => x.HashPassword)
                 .NotEmpty().WithMessage("Пароль обязателен")
-                .MinimumLength(4).WithMessage("Пароль должен содержать минимум 6 символов");
+                .MinimumLength(4).WithMessage("Пароль должен содержать минимум 4 символов");
         }
     }
 }

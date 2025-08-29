@@ -1,13 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskMarketplace.Contracts.Auth;
 using TaskMarketplace.Service.Abstractions;
-using System.ComponentModel.DataAnnotations;
 
 namespace TaskMarketplace.WebApi.Controllers;
 
 /// <summary>
 /// Контроллер для аутентификации и регистрации пользователей
 /// </summary>
+/// <response code="400">Ошибка АПИ</response>
+/// <response code="401">Неавторизованный пользователь</response>
+/// <response code="403">Доступ запрещен</response>
+/// <response code="404">Данные не найдены</response>
+/// <response code="500">Ошибка сервера</response>
 [ApiController]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
@@ -23,34 +27,37 @@ public class AuthController : ControllerBase
     /// Регистрация нового пользователя
     /// </summary>
     /// <param name="request">Данные для регистрации</param>
-    /// <returns>Результат операции регистрации</returns>
-    /// <response code="200">Пользователь успешно зарегистрирован</response>
-    /// <response code="400">Неверные данные для регистрации</response>
+    /// <param name="cancellationToken">Токен отмены</param>
+    /// <returns>Результат регистрации</returns>
+    /// <response code="204">Пользователь успешно зарегистрирован</response>
     [HttpPost("register")]
-    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> Register([FromBody] RegisterRequest request, CancellationToken cancellationToken)
     {
-        var result = await _userService.RegisterAsync(request);
+        var result = await _userService.RegisterAsync(request, cancellationToken);
+        
         if (!result.Success)
             return BadRequest(result.ErrorMessage);
-        return Ok("Registered");
+            
+        return NoContent();
     }
 
     /// <summary>
     /// Аутентификация пользователя
     /// </summary>
     /// <param name="request">Данные для входа</param>
-    /// <returns>JWT токен для аутентифицированного пользователя</returns>
+    /// <param name="cancellationToken">Токен отмены</param>
+    /// <returns>JWT токен</returns>
     /// <response code="200">Успешная аутентификация, возвращает JWT токен</response>
-    /// <response code="401">Неверные учетные данные</response>
     [HttpPost("login")]
-    [ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<IActionResult> Login([FromBody] LoginRequest request)
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Login([FromBody] LoginRequest request, CancellationToken cancellationToken)
     {
-        var token = await _userService.LoginAsync(request);
-        if (token is null) return Unauthorized();
-        return Ok(new { token });
+        var token = await _userService.LoginAsync(request, cancellationToken);
+        
+        if (token == null)
+            return Unauthorized("Неверные учетные данные");
+            
+        return Ok(token);
     }
 }
