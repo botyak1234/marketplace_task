@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\TaskMarketplace.WebApi.csproj": {}
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.WebApi\\TaskMarketplace.WebApi.csproj": {}
   },
   "projects": {
     "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.Contracts\\TaskMarketplace.Contracts.csproj": {
@@ -377,14 +377,14 @@
         }
       }
     },
-    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\TaskMarketplace.WebApi.csproj": {
+    "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.WebApi\\TaskMarketplace.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\TaskMarketplace.WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.WebApi\\TaskMarketplace.WebApi.csproj",
         "projectName": "TaskMarketplace.WebApi",
-        "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\TaskMarketplace.WebApi.csproj",
+        "projectPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.WebApi\\TaskMarketplace.WebApi.csproj",
         "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\taskmarketplace.webapi\\obj\\",
+        "outputPath": "C:\\Users\\Пользователь\\Desktop\\marketplace_task\\TaskMarketplace.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

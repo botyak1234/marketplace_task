@@ -81,13 +81,13 @@
             <summary>
             Название задачи
             </summary>
-            <example>Implement user profile page</example>
+            <example>Кастомизация профиля</example>
         </member>
         <member name="P:TaskMarketplace.Contracts.Tasks.CreateTaskRequest.Description">
             <summary>
             Описание задачи
             </summary>
-            <example>Create a user profile page with avatar upload functionality</example>
+            <example>Аватар для пользователя</example>
         </member>
         <member name="P:TaskMarketplace.Contracts.Tasks.CreateTaskRequest.Reward">
             <summary>
@@ -168,13 +168,13 @@
             <summary>
             Название задачи
             </summary>
-            <example>Fix authentication bug</example>
+            <example>Фикс бага</example>
         </member>
         <member name="P:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest.Description">
             <summary>
             Описание задачи
             </summary>
-            <example>Fix the issue with JWT token expiration</example>
+            <example>Токен полетел</example>
         </member>
         <member name="P:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest.Reward">
             <summary>
@@ -186,7 +186,7 @@
             <summary>
             Статус задачи
             </summary>
-            <example>InProgress</example>
+            <example>New</example>
         </member>
         <member name="P:TaskMarketplace.Contracts.Tasks.UpdateTaskRequest.TakenByUserId">
             <summary>

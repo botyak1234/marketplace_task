@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TaskMarketplace.Contracts.Enums;
 using TaskMarketplace.DAL.Models;
-using TaskMarketplace.DAL.Repositories;
+using TaskMarketplace.DAL.Abstractions;
 
 namespace TaskMarketplace.DAL.Repositories;
 
@@ -19,44 +19,44 @@ public class TaskRepository : ITaskRepository
         return _db.Tasks.AsQueryable();
     }
 
-    public async Task<TaskItem?> GetByIdAsync(int id)
+    public async Task<TaskItem?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
-        return await _db.Tasks.FindAsync(id);
+        return await _db.Tasks.FindAsync(new object[] { id }, cancellationToken);
     }
 
-    public async Task<TaskItem?> GetByIdWithUserAsync(int id)
-    {
-        return await _db.Tasks
-            .Include(t => t.TakenByUser)
-            .FirstOrDefaultAsync(t => t.Id == id);
-    }
-
-    public async Task<List<TaskItem>> GetAllWithUserAsync()
+    public async Task<TaskItem?> GetByIdWithUserAsync(int id, CancellationToken cancellationToken = default)
     {
         return await _db.Tasks
             .Include(t => t.TakenByUser)
-            .ToListAsync();
+            .FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
     }
 
-    public async Task<List<TaskItem>> GetByStatusAsync(MarketplaceTaskStatus status)
+    public async Task<List<TaskItem>> GetAllWithUserAsync(CancellationToken cancellationToken = default)
+    {
+        return await _db.Tasks
+            .Include(t => t.TakenByUser)
+            .ToListAsync(cancellationToken);
+    }
+
+    public async Task<List<TaskItem>> GetByStatusAsync(MarketplaceTaskStatus status, CancellationToken cancellationToken = default)
     {
         return await _db.Tasks
             .Include(t => t.TakenByUser)
             .Where(t => t.Status == status)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 
-    public async Task<List<TaskItem>> GetByUserIdOrNotTakenAsync(int userId)
+    public async Task<List<TaskItem>> GetByUserIdOrNotTakenAsync(int userId, CancellationToken cancellationToken = default)
     {
         return await _db.Tasks
             .Include(t => t.TakenByUser)
             .Where(t => t.TakenByUserId == null || t.TakenByUserId == userId)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 
-    public async Task CreateAsync(TaskItem task)
+    public async Task CreateAsync(TaskItem task, CancellationToken cancellationToken = default)
     {
-        await _db.Tasks.AddAsync(task);
+        await _db.Tasks.AddAsync(task, cancellationToken);
     }
 
     public void Update(TaskItem task)
@@ -69,8 +69,8 @@ public class TaskRepository : ITaskRepository
         _db.Tasks.Remove(task);
     }
 
-    public async Task SaveChangesAsync()
+    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        await _db.SaveChangesAsync();
+        await _db.SaveChangesAsync(cancellationToken);
     }
 }
